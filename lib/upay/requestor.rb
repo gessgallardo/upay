@@ -4,7 +4,7 @@ module Upay
     def rest
       api_uri = (Upay.test) ? 'https://stg.api.payulatam.com/payments-api/' : "https://api.payulatam.com/payments-api/"
       @rest = Faraday.new(:url => api_uri, :ssl => {:verify => false},  headers: { accept: 'application/json', :"Content-Type" => 'application/json; charset=utf-8' }) do |faraday|
-        faraday.response :logger
+        faraday.response :logger if Upay.logger == true
         faraday.response :json, :content_type => /\b(json|json-home)$/
         faraday.adapter  Faraday.default_adapter
       end
