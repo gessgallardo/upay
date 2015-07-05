@@ -17,7 +17,7 @@ require "upay/credit_cards"
 require "upay/subscriptions"
 
 module Upay
-  #attr_accessor(:merchant_id, :account_id, :api_key, :api_login, :test, :lang)
+  attr_accessor(:merchant_id, :account_id, :api_key, :api_login, :test, :lang, :logger)
 
   PAYMENTS_API_URL = "/payments-api/4.0/service.cgi"
   REPORTS_API_URL = "/reports-api/4.0/service.cgi"
