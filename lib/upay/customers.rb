@@ -60,7 +60,7 @@ module Upay
     def subscription
       response = self.show
       if response["subscriptions"]
-        self.subscription =  UPay::Subscriptions.new({:id => response["subscriptions"].last["id"]})
+        self.subscription =  Upay::Subscriptions.new({:id => response["subscriptions"].last["id"]})
       else
         {}
       end

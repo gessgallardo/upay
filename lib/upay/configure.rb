@@ -16,12 +16,12 @@ module Upay
 
         #configuration
 
-        UPay.api_login = payu_config["api_login"]
-        UPay.api_key = payu_config["api_key"]
-        UPay.test = payu_config["test"]
-        UPay.lang = payu_config["lang"]
-        UPay.merchant_id = payu_config["merchant_id"]
-        UPay.account_id = payu_config["account_id"]
+        Upay.api_login = payu_config["api_login"]
+        Upay.api_key = payu_config["api_key"]
+        Upay.test = payu_config["test"]
+        Upay.lang = payu_config["lang"]
+        Upay.merchant_id = payu_config["merchant_id"]
+        Upay.account_id = payu_config["account_id"]
       end
     end
   end
