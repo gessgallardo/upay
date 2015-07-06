@@ -1,7 +1,7 @@
 module Upay
   class ShippingAddress
-    def stree1; @stree1 end
-    def stree1(stree1 = nil) @stree1 = stree1; end
+    def street1; @street1 end
+    def street1(street1 = nil) @street1 = street1; end
     
     def street2; @street2 end
     def street2(street2 = nil) @street2 = street2; end
@@ -20,5 +20,22 @@ module Upay
 
     def phone; @phone end
     def phone(phone = nil) @phone = phone; end
+
+    def valid?
+      validator = ShippingAddressValidator.new
+      validator.valid?(self) 
+    end
+
+  end
+
+  class ShippingAddressValidator
+    include Veto.validator
+
+    validate :street1, presence: true
+    validate :city, presence: true
+    validate :state, presence: true
+    validate :country, presence: true
+    validate :postalCode, presence: true
+    validate :phon, presence: true
   end
 end

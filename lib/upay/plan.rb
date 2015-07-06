@@ -61,6 +61,11 @@ module Upay
       @trialDays = trialDays
     end
 
+    def valid?
+      validator = PlanValidator.new
+      validator.valid?(self) 
+    end
+
     #Verb: POST
     #Description:
     #Returns: JSON
@@ -122,5 +127,19 @@ module Upay
         ]
       }
     end
+  end
+
+  class PlanValidator
+    include Veto.validator
+
+    validates :accountId, presence: true
+    validates :planCode, presence: true
+    validates :description, presence: true
+    validates :interval, presence: true
+    validates :value, presence: true
+    validates :currency, presence: true
+    validates :intervalCount, presence: true
+    validates :additionalValues, presence: true
+    validates :trialDays, presence: true
   end
 end
