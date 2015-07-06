@@ -1,5 +1,5 @@
 module Upay
-  class Payments
+  class Payment
     def ping_payments
       Requestor.new.request(PAYMENTS_API_URL, "PING")
     end

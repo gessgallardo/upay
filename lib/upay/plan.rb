@@ -1,5 +1,5 @@
 module Upay
-  class Plans
+  class Plan
     def initialize(args = {})
       args.each do |k,v|
         instance_variable_set("@#{k}", v) unless v.nil?

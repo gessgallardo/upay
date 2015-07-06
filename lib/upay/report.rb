@@ -1,5 +1,5 @@
 module Upay  
-  class Reports
+  class Report
     def ping
       Requestor.new.request(REPORTS_API_URL, "PING")
     end

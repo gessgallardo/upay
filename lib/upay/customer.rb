@@ -1,5 +1,5 @@
 module Upay
-  class Customers
+  class Customer
     def fullName; @fullName end
     def fullName=(fullName)
       @fullName = fullName

@@ -1,4 +1,3 @@
-require "upay/version"
 require "json/add/core"
 require "uri"
 require "net/https"
@@ -6,19 +5,19 @@ require "base64"
 require "faraday"
 require "faraday_middleware"
 
-
+require "upay/credit_card"
+require "upay/customer"
+require "upay/plan"
+require "upay/payment"
 require "upay/requestor"
-require "upay/reports"
-require "upay/payments"
-require "upay/plans"
+require "upay/report"
+require "upay/shipping_addres"
+require "upay/subscription"
 require "upay/token"
-require "upay/customers"
-require "upay/credit_cards"
-require "upay/subscriptions"
+require "upay/version"
 
 module Upay
-  attr_accessor(:merchant_id, :account_id, :api_key, :api_login, :test, :lang, :logger)
-
+  
   PAYMENTS_API_URL = "/payments-api/4.0/service.cgi"
   REPORTS_API_URL = "/reports-api/4.0/service.cgi"
 
@@ -54,6 +53,11 @@ module Upay
   def self.lang; @lang end
   def self.lang=(lang)
     @lang = lang
+  end
+
+  def self.logger; @logger end
+  def self.logger=(logger)
+    @logger = logger
   end
 
 end

@@ -1,5 +1,5 @@
 module Upay
-  class CreditCards
+  class CreditCard
     def creditCardId; @creditCardId end
     def creditCardId=(creditCardId);
       @creditCardId = creditCardId
