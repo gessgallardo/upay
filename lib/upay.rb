@@ -4,6 +4,7 @@ require "net/https"
 require "base64"
 require "faraday"
 require "faraday_middleware"
+require "veto"
 
 require "upay/credit_card"
 require "upay/customer"
@@ -17,14 +18,15 @@ require "upay/token"
 require "upay/version"
 
 module Upay
-  
+  include Veto.validator
+
   PAYMENTS_API_URL = "/payments-api/4.0/service.cgi"
   REPORTS_API_URL = "/reports-api/4.0/service.cgi"
 
   def self.config
     yield self
   end
-
+  
   def self.merchant_id; @merchant_id end
   def self.merchant_id=(merchant_id)
     @merchant_id = merchant_id

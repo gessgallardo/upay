@@ -1,5 +1,6 @@
 module Upay
   class Customer
+
     def fullName; @fullName end
     def fullName=(fullName)
       @fullName = fullName
@@ -18,6 +19,11 @@ module Upay
     def subscription; @subscription end
     def subscription=(subscription)
       @subscription = subscription
+    end
+
+    def valid?
+      validator = CustomerValidator.new
+      validator.valid?(self) 
     end
 
     #Verb: POST
@@ -96,5 +102,12 @@ module Upay
         :email => self.email
       }
     end
+  end
+
+  class CustomerValidator
+    include Veto.validator
+
+    validates :fullName, :presence => true
+    validates :email, :presence => true
   end
 end
