@@ -45,6 +45,11 @@ module Upay
       @creditCardTokenId = creditCardTokenId 
     end
 
+    def valid?
+      validator = TokenValidator.new
+      validator.valid?(self) 
+    end
+
     def initialize(args = {})
       args.each do |k,v|
         instance_variable_set("@#{k}", v) unless v.nil?
@@ -78,5 +83,16 @@ module Upay
     def to_hash
       self.instance_variables.each_with_object({}) { |var,hash| hash[var.to_s.delete("@")] = self.instance_variable_get(var)}
     end
+  end
+
+  class TokenValidator
+    include Veto.validator
+
+    validates :payerId, presence: true
+    validates :name, presence: true
+    validates :identificationNumber, presence: true
+    validates :paymentMethod, presence: true
+    validates :number, presence: true
+    validates :expirationDate, presence: true
   end
 end
