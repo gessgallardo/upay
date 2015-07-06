@@ -41,7 +41,11 @@ module Upay
     end
 
     def initialize(attributes = {})
+    end
 
+    def valid?
+      validator = CreditCardValidator.new
+      validator.valid?(self) 
     end
 
     def create(customerID)
@@ -78,5 +82,16 @@ module Upay
       url = "rest/v4.3/customers/#{customerID}/creditCards/#{creditCardId}"
       Requestor.new.delete(url, {})
     end
+  end
+
+  class CreditCardValidator
+    include Veto.validator
+
+    validates :name, presence: true
+    validates :document, presence: true
+    validates :number, presence: true
+    validates :expMonth, presence: true
+    validates :expYear, presence: true
+    validates :type, presence: true
   end
 end
