@@ -31,11 +31,11 @@ module Upay
   class ShippingAddressValidator
     include Veto.validator
 
-    validate :street1, presence: true
-    validate :city, presence: true
-    validate :state, presence: true
-    validate :country, presence: true
-    validate :postalCode, presence: true
-    validate :phon, presence: true
+    validates :street1, presence: true
+    validates :city, presence: true
+    validates :state, presence: true
+    validates :country, presence: true
+    validates :postalCode, presence: true
+    validates :phone, presence: true
   end
 end
