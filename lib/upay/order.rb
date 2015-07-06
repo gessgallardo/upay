@@ -1,4 +1,4 @@
-module Payu
+module Upay
   class Order
   end
 end
