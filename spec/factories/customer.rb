@@ -1,4 +1,4 @@
-# spec/factories/customers.rb
+# spec/factories/customer.rb
 
 require 'faker'
 
