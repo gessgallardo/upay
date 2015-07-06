@@ -3,7 +3,7 @@
 require 'faker'
 
 FactoryGirl.define do
-  factory :customers do |f|
+  factory :customer do |f|
     f.fullName { Faker::Name.name }
     f.email {Faker::Internet.email}
   end
