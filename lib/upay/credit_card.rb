@@ -74,8 +74,19 @@ module Upay
     end
 
     def show
-      url = "rest/v4.3/creditCards/#{self.creditCardId}"
-      Requestor.new.get(url, {:creditCardId => self.creditCardId})
+      begin
+        unless self.creditCardId.nil?
+          url = "rest/v4.3/creditCards/#{self.creditCardId}"
+          Requestor.new.get(url, {:creditCardId => self.creditCardId})
+        else
+          raise "creditCardId cannot be blank"
+        end
+      end
+    end
+
+    def all
+      url = "rest/v4.3/creditCards/"
+      Requestor.new.get(url, {:creditCardId => ""})
     end
 
     def delete(customerID, creditCardId)

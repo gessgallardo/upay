@@ -1,6 +1,12 @@
 module Upay
   class Customer
 
+    def initialize(args = {})
+      args.each do |k,v|
+        instance_variable_set("@#{k}", v)
+      end
+    end
+
     def fullName; @fullName end
     def fullName=(fullName)
       @fullName = fullName
@@ -11,7 +17,12 @@ module Upay
       @email = email
     end
 
-    def customerId; @customerId end
+    def id; @id end
+    def id=(id)
+      @id = id
+    end
+
+    def customerId; @customerId || @id end
     def customerId=(customerId)
       @customerId = customerId
     end
@@ -45,12 +56,31 @@ module Upay
       Requestor.new.put(url, {:fullName => self.fullName, :email => self.email})
     end
 
-    #Verb: POST
+    #Verb: GET
     #Description:
     #Returns: JSON
     def show
-      url = "rest/v4.3/customers/#{self.customerId}"
-      Requestor.new.get(url, {})
+      begin
+        unless self.customerId.nil?
+          url = "rest/v4.3/customers/#{self.customerId}"
+          Requestor.new.get(url, {})
+        else
+          raise "customerId cannot be blank"
+        end
+      end
+    end
+
+    #Verb: GET
+    #Description:
+    #Returns: JSON
+    def all
+      url = "rest/v4.3/customers/"
+      customers = []
+      list_of_customers = Requestor.new.get(url, {})
+      if list_of_customers["customerList"] && list_of_customers["customerList"].count > 0
+        customers = list_of_customers["customerList"].map{|x| Customer.new(x) }
+      end
+      customers
     end
 
     #Verb: DELETE
@@ -66,7 +96,7 @@ module Upay
     def subscription
       response = self.show
       if response["subscriptions"]
-        self.subscription =  Upay::Subscriptions.new({:id => response["subscriptions"].last["id"]})
+        self.subscription =  Subscription.new({:id => response["subscriptions"].last["id"]})
       else
         {}
       end
