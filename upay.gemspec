@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.version       = Upay::VERSION
 
   spec.summary     = "uPay"
-  spec.description = "A simple payu payment sdk gem"
+  spec.description = "A simple payu payment gem"
   spec.authors     = ["Gess Gallardo"]
   spec.email       = 'hola@gessgallardo.com'
   spec.homepage    = 'http://rubygems.org/gems/upay'

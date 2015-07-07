@@ -20,6 +20,10 @@ module Upay
         validator = PersonValidator.new
         validator.valid?(self)
       end
+
+      def to_hash
+        person_hash = self.instance_variables.each_with_object({}) { |var,hash| hash[var.to_s.delete("@").to_sym] = self.instance_variable_get(var)}
+      end
     end
 
     class PersonValidator

@@ -94,5 +94,6 @@ module Upay
     validates :paymentMethod, presence: true
     validates :number, presence: true
     validates :expirationDate, presence: true
+    validates :code, presence: true
   end
 end

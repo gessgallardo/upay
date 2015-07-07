@@ -1,5 +1,11 @@
 module Upay
   class Transaction
+    def initialize(args = {})
+      args.each do |k,v|
+        instance_variable_set("@#{k}", v)
+      end
+    end
+
     def order; @order end
     def order=(order = nil); @order = order; end
     
@@ -29,10 +35,18 @@ module Upay
 
     def userAgent; @userAgent end
     def userAgent=(userAgent = nil) @userAgent = userAgent; end
+
     
     def valid?
       validator = TransactionValidator.new
       validator.valid?(self)
+    end
+
+    def to_hash
+      transaction_hash = self.instance_variables.each_with_object({}) { |var,hash| hash[var.to_s.delete("@").to_sym] = self.instance_variable_get(var)}
+      transaction_hash[:order] = self.order.to_hash if self.order
+      transaction_hash[:payer] = self.payer.to_hash if self.payer
+      transaction_hash
     end
   end
 
