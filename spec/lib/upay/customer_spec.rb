@@ -1,6 +1,4 @@
-
 require 'spec_helper'
-require 'upay'
 
 describe Upay::Customer do
   it "has a valid factory" do

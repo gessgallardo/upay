@@ -8,14 +8,23 @@ require "veto"
 
 require "upay/credit_card"
 require "upay/customer"
+require "upay/order"
 require "upay/plan"
 require "upay/payment"
+
+require "upay/people/person"
+require "upay/people/buyer"
+require "upay/people/payer"
+
 require "upay/requestor"
 require "upay/report"
 require "upay/shipping_address"
 require "upay/subscription"
 require "upay/token"
+require "upay/transaction"
 require "upay/version"
+
+
 
 module Upay
   include Veto.validator
