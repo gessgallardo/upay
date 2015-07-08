@@ -35,6 +35,9 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "pry-nav"
   spec.add_development_dependency "factory_girl", "~> 4.0"
   spec.add_development_dependency "faker"
+  spec.add_development_dependency "codeclimate-test-reporter"
+  spec.add_development_dependency "coveralls"
+  spec.add_development_dependency "simplecov"
 
 
   spec.add_runtime_dependency "faraday"
