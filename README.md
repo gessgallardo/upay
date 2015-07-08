@@ -1,6 +1,10 @@
 # Upay
 
-TODO: Write a gem description
+
+[![Build Status](https://travis-ci.org/gessgallardo/upay.svg?branch=master)](https://travis-ci.org/gessgallardo/upay)
+
+Upay it's a simple wrapper for make transactions in Payu
+
 
 ## Installation
 
@@ -24,7 +28,7 @@ TODO: Write usage instructions here
 
 ## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/upay/fork )
+1. Fork it ( https://github.com/gessgallardo/upay/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
