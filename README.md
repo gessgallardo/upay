@@ -3,7 +3,6 @@
 
 [![Build Status](https://travis-ci.org/gessgallardo/upay.svg?branch=master)](https://travis-ci.org/gessgallardo/upay)
 [![Code Climate](https://codeclimate.com/github/gessgallardo/upay/badges/gpa.svg)](https://codeclimate.com/github/gessgallardo/upay)
-[![Test Coverage](https://codeclimate.com/github/gessgallardo/upay/badges/coverage.svg)](https://codeclimate.com/github/gessgallardo/upay/coverage)
 [![Coverage Status](https://coveralls.io/repos/gessgallardo/upay/badge.svg?branch=master&service=github)](https://coveralls.io/github/gessgallardo/upay?branch=master)
 
 Upay it's a simple wrapper for make transactions in Payu
