@@ -1,3 +1,4 @@
+require "digest"
 require "json/add/core"
 require "uri"
 require "net/https"
@@ -23,6 +24,7 @@ require "upay/people/payer"
 require "upay/requestor"
 require "upay/report"
 
+require "upay/signature"
 require "upay/subscription"
 require "upay/token"
 require "upay/transaction"
@@ -73,6 +75,11 @@ module Upay
   def self.logger; @logger end
   def self.logger=(logger)
     @logger = logger
+  end
+
+  def self.notifyUrl; @notifyUrl end
+  def self.notifyUrl=(notifyUrl)
+    @notifyUrl = notifyUrl
   end
 
 end

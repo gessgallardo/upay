@@ -1,5 +1,25 @@
 module Upay
   class CreditCard
+    
+    def initialize(args = {})
+      reload(args)
+    end
+
+    def reload(args = {})
+      args.each do |k,v|
+        case k
+        when "token"
+          instance_variable_set("@#{k}", v)
+          instance_variable_set("@creditCardId", v)
+        when "creditCardId"
+          instance_variable_set("@#{k}", v)
+          instance_variable_set("@token", v)
+        else
+          instance_variable_set("@#{k}", v)
+        end
+      end
+    end
+
     def creditCardId; @creditCardId end
     def creditCardId=(creditCardId);
       @creditCardId = creditCardId
@@ -40,7 +60,9 @@ module Upay
       @address = address
     end
 
-    def initialize(attributes = {})
+    def token; @token end
+    def token=(token);
+      @token = token
     end
 
     def valid?
@@ -59,6 +81,7 @@ module Upay
       }
       request = Requestor.new.post(url, data)
       self.creditCardId = request["token"]
+      self.token = request["token"]
     end
 
     def update

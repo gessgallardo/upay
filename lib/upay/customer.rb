@@ -2,8 +2,20 @@ module Upay
   class Customer
 
     def initialize(args = {})
+      reload(args)
+    end
+
+    def reload(args = {})
       args.each do |k,v|
         instance_variable_set("@#{k}", v)
+        if k == "creditCards"
+          ccs = []
+          v.each do |c|
+            puts c
+            ccs << CreditCard.new(c)
+          end
+          instance_variable_set("@#{k}", ccs)
+        end
       end
     end
 
@@ -22,7 +34,7 @@ module Upay
       @id = id
     end
 
-    def customerId; @customerId || @id end
+    def customerId; @customerId end
     def customerId=(customerId)
       @customerId = customerId
     end
@@ -31,6 +43,9 @@ module Upay
     def subscription=(subscription)
       @subscription = subscription
     end
+
+    def creditCards; @creditCards end
+    def creditCards=(creditCards = {}) @creditCards = creditCards end
 
     def valid?
       validator = CustomerValidator.new
@@ -45,6 +60,7 @@ module Upay
       hash_for_create = self.to_hash
       response = Requestor.new.post(url, {:fullName => self.fullName, :email => self.email})
       self.customerId = response["id"]
+      self.id = response["id"]
       self
     end
 
@@ -63,11 +79,13 @@ module Upay
       begin
         unless self.customerId.nil?
           url = "rest/v4.3/customers/#{self.customerId}"
-          Requestor.new.get(url, {})
+          response = Requestor.new.get(url, {})
+          self.reload(response)
         else
           raise "customerId cannot be blank"
         end
       end
+      self
     end
 
     #Verb: GET

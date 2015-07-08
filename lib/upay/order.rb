@@ -4,16 +4,14 @@ module Upay
       args.each do |k,v|
         instance_variable_set("@#{k}", v)
       end
+      instance_variable_set("@accountId", Upay.account_id)
+      instance_variable_set("@language", Upay.lang)
+      instance_variable_set("@notifyUrl", Upay.notifyUrl)
     end
 
     def accountId; @accountId end
-    def accountId=(accountId = nil); @accountId = Upay.account_id end
-    
     def language; @language end
-    def language=(language = nil); @language = Upay.lang end
-
     def notifyUrl; @notifyUrl end
-    def notifyUrl=(notifyUrl = "") @notifyUrl = notifyUrl; end
 
     def additionalValues; @additionalValues end
     def additionalValues=(additionalValues = {}); @additionalValues end

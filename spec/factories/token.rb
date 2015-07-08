@@ -14,6 +14,5 @@ FactoryGirl.define do
       date = Faker::Business.credit_card_expiry_date.strftime("%m/%Y").split("/")
       "#{date.last}/#{date.first}"
     }
-    f.code{ Faker::Number.number(3)}
   end
 end

@@ -63,7 +63,7 @@ module Upay
       self.code = response["response"]["code"]
       self.error = response["response"]["error"]
 
-      if response["response"]["error"].blank?
+      if response["response"]["error"] == nil
         self.creditCardTokenId = response["response"]["creditCardToken"]["creditCardTokenId"]
       end
 
@@ -94,6 +94,5 @@ module Upay
     validates :paymentMethod, presence: true
     validates :number, presence: true
     validates :expirationDate, presence: true
-    validates :code, presence: true
   end
 end
