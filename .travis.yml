@@ -5,7 +5,7 @@ before_install:
 rvm:
   - 2.1.2
 
-#script: 'bundle exec rake'
+script: 'bundle exec rake'
 
 notifications:
   email:
@@ -13,3 +13,7 @@ notifications:
       - hola@gessgallardo.com
     on_failure: change
     on_success: never
+
+addons:
+  code_climate:
+    repo_token: 60aa936375efa981484ef157887d3120eb6d8aaa6ccc7659e3741e3e2fbe1253
