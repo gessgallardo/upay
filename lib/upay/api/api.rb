@@ -1,37 +1,37 @@
 module Upay
   class API
-    def credit_card
-      CreditCard.new
+    def credit_card(args = {})
+      CreditCard.new(args)
     end
-    def customer
-      Customer.new
+    def customer(args = {})
+      Customer.new(args)
     end
-    def order
-      Order.new
+    def order(args = {})
+      Order.new(args)
     end
-    def payment
-      Payment.new
+    def payment(args = {})
+      Payment.new(args)
     end
-    def plan
-      Plan.new
+    def plan(args = {})
+      Plan.new(args)
     end
-    def report
-      Report.new
+    def report(args = {})
+      Report.new(args)
     end
-    def requestor
-      Requestor.new
+    def requestor(args = {})
+      Requestor.new(args)
     end
-    def signature
-      Signature.new
+    def signature(args = {})
+      Signature.new(args)
     end
-    def subscription
-      Subscription.new
+    def subscription(args = {})
+      Subscription.new(args)
     end
-    def token
-      Token.new
+    def token(args = {})
+      Token.new(args)
     end
-    def transaction
-      Transaction.new
+    def transaction(args = {})
+      Transaction.new(args)
     end
   end
 end
