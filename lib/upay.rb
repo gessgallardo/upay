@@ -11,6 +11,8 @@ require "upay/address/address"
 require "upay/address/billing_address"
 require "upay/address/shipping_address"
 
+require "upay/api/api"
+
 require "upay/credit_card"
 require "upay/customer"
 require "upay/order"
